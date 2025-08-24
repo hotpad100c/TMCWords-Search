@@ -15,6 +15,20 @@
 <body>
   <h1>TechMC Glossary Search</h1>
   <label for="searchBox"></label><input type="text" id="searchBox" placeholder="Keywords..." />
+  <select id="langSelector">
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="it">Italiano</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="pt">Português</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+  </select>
+
   <p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv">DuskScorpio's TechMC-Glossary</a></p>
   <table id="resultTable">
     <thead>
@@ -26,60 +40,7 @@
     </thead>
     <tbody></tbody>
   </table>
-
-  <script>
-    let data = [];
-
-    Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/TechMC%20Glossary.csv", {
-      download: true,
-      header: true,
-      complete: function(results) {
-        data = results.data;
-        renderTable(data, "");
-      }
-    });
-
-    document.getElementById("searchBox").addEventListener("input", function() {
-      const keyword = this.value.toLowerCase();
-      if (!keyword) {
-        renderTable(data, "");
-      } else {
-        const filtered = data.filter(row =>
-          Object.values(row).some(v => v && v.toLowerCase().includes(keyword))
-        );
-        renderTable(filtered, keyword);
-      }
-    });
-
-    function highlight(text, keyword) {
-      if (!text) return "";
-      if (!keyword) return text;
-      const regex = new RegExp(`(${keyword})`, "gi");
-      return text.replace(regex, "<mark>$1</mark>");
-    }
-
-    function makeCell(text, fallback, colorIfMissing, keyword) {
-      if (!text) return `<td style="background-color:${colorIfMissing};">${fallback}</td>`;
-      return `<td>${highlight(text, keyword)}</td>`;
-    }
-
-    function renderTable(rows, keyword) {
-      const tbody = document.querySelector("#resultTable tbody");
-      tbody.innerHTML = "";
-      if (rows.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" class="no-result">No Result</td></tr>`;
-        return;
-      }
-      rows.forEach(row => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          ${makeCell(row["Short Form"], "-", "#ffefef", keyword)}
-          ${makeCell(row["Full Form (English)"], "-", "#ffefef", keyword)}
-          ${makeCell(row["Description"], "No Description", "#ffefef", keyword)}
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-  </script>
+  <script src="lang.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
