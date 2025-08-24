@@ -14,7 +14,8 @@
 </head>
 <body>
   <h1>TechMC Glossary Search</h1>
-  <input type="text" id="searchBox" placeholder="Keywords..." />
+  <label for="searchBox"></label><input type="text" id="searchBox" placeholder="Keywords..." />
+  <p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv">DuskScorpio's TechMC-Glossary</a></p>
   <table id="resultTable">
     <thead>
       <tr>
@@ -72,9 +73,9 @@
       rows.forEach(row => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          ${makeCell(row["Short Form"], "No Short Form", "#ff6961", keyword)}
-          ${makeCell(row["Full Form (English)"], "No English FullForm", "#ff6961", keyword)}
-          ${makeCell(row["Description"], "No Description", "#ff6961", keyword)}
+          ${makeCell(row["Short Form"], "-", "#ffefef", keyword)}
+          ${makeCell(row["Full Form (English)"], "-", "#ffefef", keyword)}
+          ${makeCell(row["Description"], "No Description", "#ffefef", keyword)}
         `;
         tbody.appendChild(tr);
       });
