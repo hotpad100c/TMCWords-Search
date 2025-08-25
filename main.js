@@ -66,20 +66,22 @@ function renderTable(rows, keyword) {
         `;
 
         if (window.langDict.full && window.langDict.full.trim() !== "") {
-            html += `${makeCell(row[`${window.langDict.lang}`], "noFull", "#ffefef33", keyword)}`;
+            html += `${makeCell(row[window.langDict.lang], "noFull", "#ffefef33", keyword)}`;
         }
 
-
-        let descriptionName = ""
-        if(langDict.lang !== "English") {
+        // 没有时fallback到英文
+        let descriptionName = "";
+        if (window.langDict.lang !== "English") {
             descriptionName = " (" + window.langDict.lang + ")";
         }
-        html += `${makeCell(row["Description" + descriptionName], "noDesc", "#ffefef", keyword)}`;
+        const localDesc = row["Description" + descriptionName] || row["Description"];
+        html += `${makeCell(localDesc, "noDesc", "#ffefef", keyword)}`;
 
         tr.innerHTML = html;
         tbody.appendChild(tr);
     });
 }
+
 
 function applyLang(dict) {
     const theadRow = document.querySelector("#resultTable thead tr");
