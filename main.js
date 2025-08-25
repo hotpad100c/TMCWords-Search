@@ -38,12 +38,12 @@ function highlight(text, keyword) {
     return text.replace(regex, "<mark>$1</mark>");
 }
 
-function makeCell(text, fallbackKey, colorIfMissing, keyword) {
+function makeCell(text, fallbackKey,keyword) {
     if (!text) {
-        return `<td style="background-color:${colorIfMissing};">${window.langDict[fallbackKey]}</td>`;
+        return `<td style="background-color:#ff333333;">${window.langDict[fallbackKey]}</td>`;
     }
     if (text.includes("*")) {
-        return `<td style="background-color:#fff8dc33;">${highlight(text, keyword)}</td>`;
+        return `<td style="background-color:#ffa50022;">${highlight(text, keyword)}</td>`;
     }
     return `<td>${highlight(text, keyword)}</td>`;
 }
@@ -61,12 +61,12 @@ function renderTable(rows, keyword) {
     rows.forEach(row => {
         const tr = document.createElement("tr");
         let html = `
-            ${makeCell(row["Short Form"], "noShort", "#ff333333", keyword)}
-            ${makeCell(row["Full Form (English)"], "noFullEnglish", "#ff333333", keyword)}
+            ${makeCell(row["Short Form"], "noShort", keyword)}
+            ${makeCell(row["Full Form (English)"], "noFullEnglish", keyword)}
         `;
 
         if (window.langDict.full && window.langDict.full.trim() !== "") {
-            html += `${makeCell(row[window.langDict.lang], "noFull", "#ff333333", keyword)}`;
+            html += `${makeCell(row[window.langDict.lang], "noFull", keyword)}`;
         }
 
         // 没有时fallback到英文
@@ -75,7 +75,7 @@ function renderTable(rows, keyword) {
             descriptionName = " (" + window.langDict.lang + ")";
         }
         const localDesc = row["Description" + descriptionName] || row["Description"];
-        html += `${makeCell(localDesc, "noDesc", "#ff333333", keyword)}`;
+        html += `${makeCell(localDesc, "noDesc", keyword)}`;
 
         tr.innerHTML = html;
         tbody.appendChild(tr);
