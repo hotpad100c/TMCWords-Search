@@ -8,40 +8,20 @@ Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/T
     complete: function(results) {
         data = results.data;
         applyLang(window.langDict);
-        renderTable(data, "");
     }
 });
 
-// 搜索监听
 document.getElementById("searchBox").addEventListener("input", function() {
-    scheduleRender();
+    const keyword = this.value.toLowerCase();
+    renderWithKeyword(keyword);
 });
 
 document.getElementById("langSelector").addEventListener("change", function() {
-    window.langDict = i18n[this.value]; // 更新语言字典
+    window.langDict = i18n[this.value];
     applyLang(window.langDict);
-    renderTable(data, document.getElementById("searchBox").value.toLowerCase());
 });
-function renderColumnSelectors() {
-    const container = document.getElementById("columnSelectors");
-    container.innerHTML = ""; // 清空旧内容
-    const columns = window.langDict.columns;
-    for (let key in columns) {
-        const label = document.createElement("label");
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.checked = true; // 默认显示
-        checkbox.dataset.col = key; // 保存对应列
-        checkbox.addEventListener("change", () => renderTable(data, document.getElementById("searchBox").value.toLowerCase()));
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(" " + columns[key]));
-        container.appendChild(label);
-        container.appendChild(document.createTextNode(" ")); // 间隔
-    }
-}
 
-function scheduleRender(){
-    const keyword = this.value.toLowerCase();
+function renderWithKeyword(keyword) {
     if (!keyword) {
         renderTable(data, "");
     } else {
@@ -51,6 +31,27 @@ function scheduleRender(){
         renderTable(filtered, keyword);
     }
 }
+
+function renderColumnSelectors() {
+    const container = document.getElementById("columnSelectors");
+    container.innerHTML = "";
+    const columns = window.langDict.columns;
+    for (let key in columns) {
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = true;
+        checkbox.dataset.col = key;
+        checkbox.addEventListener("change", () => {
+            renderWithKeyword(document.getElementById("searchBox").value.toLowerCase());
+        });
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(" " + columns[key]));
+        container.appendChild(label);
+        container.appendChild(document.createTextNode(" "));
+    }
+}
+
 function highlight(text, keyword) {
     if (!text) return "";
     if (!keyword) return text;
@@ -58,9 +59,9 @@ function highlight(text, keyword) {
     return text.replace(regex, "<mark>$1</mark>");
 }
 
-function makeCell(text, fallbackKey,keyword) {
+function makeCell(text, fallbackKey, keyword) {
     if (!text) {
-        return `<td style="background-color:#ff333333;">${window.langDict[fallbackKey]}</td>`;
+        return `<td style="background-color:#33333333;">${window.langDict[fallbackKey]}</td>`;
     }
     if (text.includes("*")) {
         return `<td style="background-color:#ffa50022;">${highlight(text, keyword)}</td>`;
@@ -68,7 +69,6 @@ function makeCell(text, fallbackKey,keyword) {
     return `<td>${highlight(text, keyword)}</td>`;
 }
 
-// 渲染
 function renderTable(rows, keyword) {
     const tbody = document.querySelector("#resultTable tbody");
     tbody.innerHTML = "";
@@ -89,13 +89,13 @@ function renderTable(rows, keyword) {
         let html = "";
 
         if (columnsVisible.short) {
-            html += makeCell(row["Short Form"], "noShort", "#33333333", keyword);
+            html += makeCell(row["Short Form"], "noShort", keyword);
         }
         if (columnsVisible.fullEnglish) {
-            html += makeCell(row["Full Form (English)"], "noFullEnglish", "#33333333", keyword);
+            html += makeCell(row["Full Form (English)"], "noFullEnglish", keyword);
         }
         if (columnsVisible.full && window.langDict.full.trim() !== "") {
-            html += makeCell(row[window.langDict.lang], "noFull", "#33333333", keyword);
+            html += makeCell(row[window.langDict.lang], "noFull", keyword);
         }
 
         if (columnsVisible.desc) {
@@ -104,7 +104,7 @@ function renderTable(rows, keyword) {
                 descriptionName = " (" + window.langDict.lang + ")";
             }
             const localDesc = row["Description" + descriptionName] || row["Description"];
-            html += makeCell(localDesc, "noDesc", "#33333333", keyword);
+            html += makeCell(localDesc, "noDesc", keyword);
         }
 
         tr.innerHTML = html;
@@ -123,7 +123,7 @@ function applyLang(dict) {
     }
     html += `<th>${dict.desc}</th>`;
     theadRow.innerHTML = html;
-    scheduleRender();
-    renderColumnSelectors();
-}
 
+    renderColumnSelectors();
+    renderWithKeyword(document.getElementById("searchBox").value.toLowerCase());
+}
