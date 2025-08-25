@@ -14,6 +14,15 @@ Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/T
 
 // 搜索监听
 document.getElementById("searchBox").addEventListener("input", function() {
+    scheduleRender();
+});
+
+document.getElementById("langSelector").addEventListener("change", function() {
+    window.langDict = i18n[this.value]; // 更新语言字典
+    applyLang(window.langDict);
+    renderTable(data, document.getElementById("searchBox").value.toLowerCase());
+});
+function scheduleRender(){
     const keyword = this.value.toLowerCase();
     if (!keyword) {
         renderTable(data, "");
@@ -23,14 +32,7 @@ document.getElementById("searchBox").addEventListener("input", function() {
         );
         renderTable(filtered, keyword);
     }
-});
-
-document.getElementById("langSelector").addEventListener("change", function() {
-    window.langDict = i18n[this.value]; // 更新语言字典
-    applyLang(window.langDict);
-    renderTable(data, document.getElementById("searchBox").value.toLowerCase());
-});
-
+}
 function highlight(text, keyword) {
     if (!text) return "";
     if (!keyword) return text;
@@ -94,5 +96,6 @@ function applyLang(dict) {
     }
     html += `<th>${dict.desc}</th>`;
     theadRow.innerHTML = html;
+    scheduleRender();
 }
 
