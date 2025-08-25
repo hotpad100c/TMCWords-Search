@@ -11,7 +11,13 @@ const i18n = {
         noFullEnglish: "No English FullForm",
         noFull: " ",
         noDesc: "No Description",
-        lang: "English"
+        lang: "English",
+        columns: {
+            short: "Show Short Form",
+            fullEnglish: "Show Full Form (English)",
+            full: "Show Full Form (Local)",
+            desc: "Show Description"
+        }
     },
     zh: {
         title: "TechMC术语查询",
@@ -25,7 +31,13 @@ const i18n = {
         noFullEnglish: "无英文全称",
         noFull: "无全称",
         noDesc: "无描述",
-        lang: "Chinese"
+        lang: "Chinese",
+        columns: {
+            short: "显示缩写",
+            fullEnglish: "显示英文全称",
+            full: "显示本地全称",
+            desc: "显示描述"
+        }
     },
     ar: {
         title: "بحث مسرد TechMC",
@@ -39,7 +51,13 @@ const i18n = {
         noFullEnglish: "لا يوجد اسم كامل بالإنجليزية",
         noFull: "لا يوجد اسم كامل",
         noDesc: "لا يوجد وصف",
-        lang: "Arabic"
+        lang: "Arabic",
+        columns: {
+            short: "عرض الاختصار",
+            fullEnglish: "عرض الاسم الكامل (إنجليزي)",
+            full: "عرض الاسم الكامل (محلي)",
+            desc: "عرض الوصف"
+        }
     },
     fr: {
         title: "Recherche du glossaire TechMC",
@@ -53,7 +71,13 @@ const i18n = {
         noFullEnglish: "Pas de forme complète en anglais",
         noFull: "Pas de forme complète",
         noDesc: "Pas de description",
-        lang: "French"
+        lang: "French",
+        columns: {
+            short: "Afficher l'abréviation",
+            fullEnglish: "Afficher la forme complète (Anglais)",
+            full: "Afficher la forme complète (locale)",
+            desc: "Afficher la description"
+        }
     },
     de: {
         title: "TechMC Glossar Suche",
@@ -67,7 +91,13 @@ const i18n = {
         noFullEnglish: "Keine englische Vollform",
         noFull: "Keine Vollform",
         noDesc: "Keine Beschreibung",
-        lang: "German"
+        lang: "German",
+        columns: {
+            short: "Abkürzung anzeigen",
+            fullEnglish: "Englische Vollform anzeigen",
+            full: "Lokale Vollform anzeigen",
+            desc: "Beschreibung anzeigen"
+        }
     },
     it: {
         title: "Ricerca glossario TechMC",
@@ -81,7 +111,13 @@ const i18n = {
         noFullEnglish: "Nessuna forma completa in inglese",
         noFull: "Nessuna forma completa",
         noDesc: "Nessuna descrizione",
-        lang: "Italian"
+        lang: "Italian",
+        columns: {
+            short: "Mostra abbreviazione",
+            fullEnglish: "Mostra forma completa (Inglese)",
+            full: "Mostra forma completa (locale)",
+            desc: "Mostra descrizione"
+        }
     },
     ja: {
         title: "TechMC用語検索",
@@ -95,7 +131,13 @@ const i18n = {
         noFullEnglish: "英語の完全な形なし",
         noFull: "完全な形なし",
         noDesc: "説明なし",
-        lang: "Japanese"
+        lang: "Japanese",
+        columns: {
+            short: "略語を表示",
+            fullEnglish: "英語の完全な形を表示",
+            full: "現地語の完全な形を表示",
+            desc: "説明を表示"
+        }
     },
     ko: {
         title: "TechMC 용어 검색",
@@ -109,7 +151,13 @@ const i18n = {
         noFullEnglish: "영어 전체 형식 없음",
         noFull: "전체 형식 없음",
         noDesc: "설명 없음",
-        lang: "Korean"
+        lang: "Korean",
+        columns: {
+            short: "약어 표시",
+            fullEnglish: "영어 전체형식 표시",
+            full: "현지 전체형식 표시",
+            desc: "설명 표시"
+        }
     },
     pt: {
         title: "Pesquisa no glossário TechMC",
@@ -123,7 +171,13 @@ const i18n = {
         noFullEnglish: "Sem forma completa em inglês",
         noFull: "Sem forma completa",
         noDesc: "Sem descrição",
-        lang: "Portugese"
+        lang: "Portuguese",
+        columns: {
+            short: "Mostrar abreviação",
+            fullEnglish: "Mostrar forma completa (Inglês)",
+            full: "Mostrar forma completa (local)",
+            desc: "Mostrar descrição"
+        }
     },
     ru: {
         title: "Поиск в глоссарии TechMC",
@@ -137,7 +191,13 @@ const i18n = {
         noFullEnglish: "Нет полной формы на английском",
         noFull: "Нет полной формы",
         noDesc: "Нет описания",
-        lang: "Russian"
+        lang: "Russian",
+        columns: {
+            short: "Показать аббревиатуру",
+            fullEnglish: "Показать английскую форму",
+            full: "Показать локальную форму",
+            desc: "Показать описание"
+        }
     },
     es: {
         title: "Búsqueda de Glosario TechMC",
@@ -151,6 +211,12 @@ const i18n = {
         noFullEnglish: "Sin forma completa en inglés",
         noFull: "Sin forma completa",
         noDesc: "Sin descripción",
-        lang: "Spanish"
+        lang: "Spanish",
+        columns: {
+            short: "Mostrar abreviatura",
+            fullEnglish: "Mostrar forma completa (Inglés)",
+            full: "Mostrar forma completa (local)",
+            desc: "Mostrar descripción"
+        }
     }
 };
