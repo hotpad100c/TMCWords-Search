@@ -61,12 +61,12 @@ function renderTable(rows, keyword) {
     rows.forEach(row => {
         const tr = document.createElement("tr");
         let html = `
-            ${makeCell(row["Short Form"], "noShort", "#ffefef33", keyword)}
-            ${makeCell(row["Full Form (English)"], "noFullEnglish", "#ffefef33", keyword)}
+            ${makeCell(row["Short Form"], "noShort", "#ff333333", keyword)}
+            ${makeCell(row["Full Form (English)"], "noFullEnglish", "#ff333333", keyword)}
         `;
 
         if (window.langDict.full && window.langDict.full.trim() !== "") {
-            html += `${makeCell(row[window.langDict.lang], "noFull", "#ffefef33", keyword)}`;
+            html += `${makeCell(row[window.langDict.lang], "noFull", "#ff333333", keyword)}`;
         }
 
         // 没有时fallback到英文
@@ -75,7 +75,7 @@ function renderTable(rows, keyword) {
             descriptionName = " (" + window.langDict.lang + ")";
         }
         const localDesc = row["Description" + descriptionName] || row["Description"];
-        html += `${makeCell(localDesc, "noDesc", "#ffefef", keyword)}`;
+        html += `${makeCell(localDesc, "noDesc", "#ff333333", keyword)}`;
 
         tr.innerHTML = html;
         tbody.appendChild(tr);
