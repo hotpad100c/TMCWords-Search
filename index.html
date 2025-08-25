@@ -14,8 +14,7 @@
     a {
        color: #66ccff;
        text-decoration: none;
-      }
-
+    }
     h1 {
        font-family: 'PerfectlyScratchy', sans-serif;
        font-size: 6em;
@@ -33,6 +32,16 @@
       color: white;
     }
     input { padding: 5px; width: 600px; }
+    #columnSelectors {
+        margin: 10px 0;
+        padding: 5px;
+        background-color: rgba(255,255,255,0.05);
+        border-radius: 4px;
+    }
+    #columnSelectors label {
+        margin-right: 10px;
+        cursor: pointer;
+    }
     table { border-collapse: collapse; margin-top: 20px; width: 100%; }
     td, th { border: 1px solid #ccc; padding: 8px; }
     .no-result { text-align:center; color:#888; }
@@ -40,7 +49,7 @@
 </head>
 <body>
   <h1>TechMC Glossary Search</h1>
-  <label for="searchBox"></label><input type="text" id="searchBox" placeholder="Keywords..." />
+  <input type="text" id="searchBox" placeholder="Keywords..." />
   <select id="langSelector">
       <option value="en">English</option>
       <option value="zh">中文</option>
@@ -54,7 +63,13 @@
       <option value="ru">Русский</option>
       <option value="es">Español</option>
   </select>
-  <div id="columnSelectors"></div>
+
+  <div id="columnSelectors">
+    <label><input type="checkbox" data-col="short" checked> Short Form</label>
+    <label><input type="checkbox" data-col="fullEnglish" checked> Full Form (English)</label>
+    <label><input type="checkbox" data-col="full" checked> Full Form (Local)</label>
+    <label><input type="checkbox" data-col="desc" checked> Description</label>
+  </div>
 
   <p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv">DuskScorpio's TechMC-Glossary</a></p>
   <table id="resultTable">
@@ -62,11 +77,13 @@
       <tr>
         <th>Short Form</th>
         <th>Full Form (English)</th>
+        <th>Full Form (Local)</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
+  
   <script src="lang.js"></script>
   <script src="main.js"></script>
 </body>
