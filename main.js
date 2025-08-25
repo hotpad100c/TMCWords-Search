@@ -43,7 +43,7 @@ function makeCell(text, fallbackKey, colorIfMissing, keyword) {
         return `<td style="background-color:${colorIfMissing};">${window.langDict[fallbackKey]}</td>`;
     }
     if (text.includes("*")) {
-        return `<td style="background-color:#fff8dc;">${highlight(text, keyword)}</td>`;
+        return `<td style="background-color:#fff8dc33;">${highlight(text, keyword)}</td>`;
     }
     return `<td>${highlight(text, keyword)}</td>`;
 }
@@ -61,12 +61,12 @@ function renderTable(rows, keyword) {
     rows.forEach(row => {
         const tr = document.createElement("tr");
         let html = `
-            ${makeCell(row["Short Form"], "noShort", "#ffefef", keyword)}
-            ${makeCell(row["Full Form (English)"], "noFullEnglish", "#ffefef", keyword)}
+            ${makeCell(row["Short Form"], "noShort", "#ffefef33", keyword)}
+            ${makeCell(row["Full Form (English)"], "noFullEnglish", "#ffefef33", keyword)}
         `;
 
         if (window.langDict.full && window.langDict.full.trim() !== "") {
-            html += `${makeCell(row[`${window.langDict.lang}`], "noFull", "#ffefef", keyword)}`;
+            html += `${makeCell(row[`${window.langDict.lang}`], "noFull", "#ffefef33", keyword)}`;
         }
 
 
