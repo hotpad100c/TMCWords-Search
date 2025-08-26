@@ -47,7 +47,7 @@ if (!loadingBar) {
                 logToPage("Papa Parse errors:", results.errors);
             }
             data = results.data;
-            logToPage("Parsed CSV data:", data[0]);
+            logToPage("Parsed CSV data length: " + data.length);
             applyLang(window.langDict);
         },
         error: function(error) { 
