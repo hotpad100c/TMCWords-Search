@@ -1,16 +1,31 @@
 let data = [];
 
 window.langDict = i18n["en"];
+const loadingBar = document.getElementById("loadingBar");
+if (!loadingBar) {
+    console.error("Loading bar element not found");
+} else {
+    loadingBar.style.display = "block";
 
-Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/TechMC%20Glossary.csv", {
-    download: true,
-    header: true,
-    complete: function(results) {
-        data = results.data;
-        applyLang(window.langDict);
-    }
-});
-
+    Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/TechMC%20Glossary.csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+            loadingBar.style.display = "none";
+            if (results.errors.length > 0) {
+                console.error("Papa Parse errors:", results.errors);
+                return;
+            }
+            data = results.data;
+            console.log("Parsed CSV data:", data[0]);
+            applyLang(window.langDict);
+        },
+        error: function(error) { 
+            loadingBar.style.display = "none";
+            console.error("Papa Parse failed:", error);
+        }
+    });
+}
 document.getElementById("searchBox").addEventListener("input", function() {
     const keyword = this.value.toLowerCase();
     renderWithKeyword(keyword);
