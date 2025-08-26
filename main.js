@@ -1,9 +1,29 @@
+
+function createDebugOutput() {
+    const debugDiv = document.createElement("div");
+    debugDiv.id = "debugOutput";
+    debugDiv.style.border = "1px solid #ccc";
+    debugDiv.style.padding = "10px";
+    debugDiv.style.margin = "10px";
+    debugDiv.style.backgroundColor = "#f9f9f9";
+    document.body.appendChild(debugDiv);
+    return debugDiv;
+}
+
+function logToPage(message) {
+    const debugDiv = document.getElementById("debugOutput") || createDebugOutput();
+    const p = document.createElement("p");
+    p.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+    debugDiv.appendChild(p);
+}
+
+
 let data = [];
 
 window.langDict = i18n["en"];
 const loadingBar = document.getElementById("loadingBar");
 if (!loadingBar) {
-    console.error("Loading bar element not found");
+    logToPage("Loading bar element not found");
 } else {
     loadingBar.style.display = "block";
 
@@ -13,16 +33,16 @@ if (!loadingBar) {
         complete: function(results) {
             loadingBar.style.display = "none";
             if (results.errors.length > 0) {
-                console.error("Papa Parse errors:", results.errors);
+                logToPage("Papa Parse errors:"+ results.errors);
                 return;
             }
             data = results.data;
-            console.log("Parsed CSV data:", data[0]);
+            logToPage("Parsed CSV data:", data[0]);
             applyLang(window.langDict);
         },
         error: function(error) { 
             loadingBar.style.display = "none";
-            console.error("Papa Parse failed:", error);
+            logToPage("Papa Parse failed:", error);
         }
     });
 }
