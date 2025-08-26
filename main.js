@@ -44,7 +44,7 @@ if (!loadingBar) {
         complete: function(results) {
             loadingBar.style.display = "none";
             if (results.errors.length > 0) {
-                logToPage("Papa Parse errors:"+ results.errors);
+                logToPage("Papa Parse errors:", results.errors);
             }
             data = results.data;
             logToPage("Parsed CSV data:", data[0]);
