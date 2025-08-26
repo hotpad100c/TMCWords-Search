@@ -5,7 +5,7 @@ function createDebugOutput() {
     debugDiv.style.border = "1px solid #ccc";
     debugDiv.style.padding = "10px";
     debugDiv.style.margin = "10px";
-    debugDiv.style.backgroundColor = "#22222233";
+    debugDiv.style.backgroundColor = "#0e0e0e";
     document.body.appendChild(debugDiv);
     return debugDiv;
 }
