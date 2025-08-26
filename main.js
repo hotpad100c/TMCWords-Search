@@ -85,6 +85,7 @@ function makeCell(text, fallbackKey, keyword) {
 }
 
 function renderTable(rows, keyword) {
+    updateTableHeader(); 
     const tbody = document.querySelector("#resultTable tbody");
     tbody.innerHTML = "";
 
@@ -126,19 +127,25 @@ function renderTable(rows, keyword) {
         tbody.appendChild(tr);
     });
 }
-
-function applyLang(dict) {
+function updateTableHeader() {
     const theadRow = document.querySelector("#resultTable thead tr");
-    let html = `
-        <th>${dict.short}</th>
-        <th>${dict.fullEnglish}</th>
-    `;
-    if (dict.full && dict.full.trim() !== "") {
-        html += `<th>${dict.full}</th>`;
-    }
-    html += `<th>${dict.desc}</th>`;
-    theadRow.innerHTML = html;
+    const columnsVisible = {};
+    document.querySelectorAll("#columnSelectors input[type=checkbox]").forEach(cb => {
+        columnsVisible[cb.dataset.col] = cb.checked;
+    });
 
+    const dict = window.langDict;
+    let html = '';
+
+    if (columnsVisible.short) html += `<th data-col="short">${dict.short}</th>`;
+    if (columnsVisible.fullEnglish) html += `<th data-col="fullEnglish">${dict.fullEnglish}</th>`;
+    if (columnsVisible.full && dict.full.trim() !== '' && columnsVisible.full) html += `<th data-col="full">${dict.full}</th>`;
+    if (columnsVisible.desc) html += `<th data-col="desc">${dict.desc}</th>`;
+
+    theadRow.innerHTML = html;
+}
+function applyLang(dict) {
+    window.langDict = dict;
     renderColumnSelectors();
-    renderWithKeyword(document.getElementById("searchBox").value.toLowerCase());
+    renderTable(data, document.getElementById("searchBox").value.toLowerCase());
 }
