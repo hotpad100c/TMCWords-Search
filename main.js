@@ -10,11 +10,22 @@ function createDebugOutput() {
     return debugDiv;
 }
 
-function logToPage(message) {
+function logToPage(...args) {
     const debugDiv = document.getElementById("debugOutput") || createDebugOutput();
     const p = document.createElement("p");
-    p.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-    debugDiv.appendChild(p);
+  const time = new Date().toLocaleTimeString();
+  const message = args.map(a => {
+    try {
+      return (typeof a === "object")
+        ? JSON.stringify(a, null, 2)
+        : String(a);
+    } catch (e) {
+      return String(a);
+    }
+  }).join(" ");
+
+  p.textContent = `[${time}] ${message}`;
+  debugDiv.appendChild(p);
 }
 
 
