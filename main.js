@@ -61,10 +61,10 @@ function highlight(text, keyword) {
 
 function makeCell(text, fallbackKey, keyword) {
     if (!text) {
-        return `<td style="background-color:#33333333;">${window.langDict[fallbackKey]}</td>`;
+        return `<td style="background-color:#ff333333;">${window.langDict[fallbackKey]}</td>`;
     }
     if (text.includes("*")) {
-        return `<td style="background-color:#ffa50022;">${highlight(text, keyword)}</td>`;
+        return `<td style="background-color:#ffa50033;">${highlight(text, keyword)}</td>`;
     }
     return `<td>${highlight(text, keyword)}</td>`;
 }
