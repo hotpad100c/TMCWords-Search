@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #0a3d62;
+            background-image:
+                    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+                    url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+            background-size: 40px 40px, 40px 40px, auto;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0,0,0,0.65);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        }
+
+        h1 {
+            color: #f1c40f;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-section {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-section .separator {
+            margin: 0 10px;
+            color: #f1c40f;
+        }
+
+        .desc-section {
+            background: rgba(255,255,255,0.05);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.3em;
+        }
+
+        .desc-label {
+            font-weight: bold;
+            color: #87cefa;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #2980b9;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+
+        .back-link:hover {
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 id="wordTitle">Loading...</h1>
+
+    <div class="form-section">
+        <span id="full"></span>
+        <span class="separator">/</span>
+        <span id="local"></span>
+    </div>
+
+    <div class="desc-section">
+        <span id="localDescName" class="desc-label"></span>
+        <span id="localDesc"></span>
+    </div>
+
+    <div class="desc-section">
+        <span id="desc"></span>
+    </div>
+
+    <a id="backLink" href="index.html" class="back-link">⬅ Back to Glossary</a>
+</div>
+
+<script src="lang.js"></script>
+<script src="details.js"></script>
+</body>
+</html>

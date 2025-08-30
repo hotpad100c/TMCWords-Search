@@ -32,6 +32,13 @@ function logToPage(...args) {
 let data = [];
 
 window.langDict = i18n["en"];
+
+const urlParams = new URLSearchParams(window.location.search);
+const initialLang = urlParams.get("lang") || "en";
+document.getElementById("langSelector").value = initialLang;
+window.langDict = i18n[initialLang];
+applyLang(window.langDict);
+
 const loadingBar = document.getElementById("loadingBar");
 if (!loadingBar) {
     logToPage("Loading bar element not found");
@@ -82,18 +89,20 @@ function renderColumnSelectors() {
     container.innerHTML = "";
     const columns = window.langDict.columns;
     for (let key in columns) {
+        const p = document.createElement("p");
         const label = document.createElement("label");
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.checked = true;
+        checkbox.checked = (key !== columns[3]);
         checkbox.dataset.col = key;
         checkbox.addEventListener("change", () => {
             renderWithKeyword(document.getElementById("searchBox").value.toLowerCase());
         });
+
         label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(" " + columns[key]));
-        container.appendChild(label);
-        container.appendChild(document.createTextNode(" "));
+        label.appendChild(document.createTextNode(columns[key]));
+        p.appendChild(label);
+        container.appendChild(p);
     }
 }
 
@@ -143,17 +152,29 @@ function renderTable(rows, keyword) {
         if (columnsVisible.full && window.langDict.full.trim() !== "") {
             html += makeCell(row[window.langDict.lang], "noFull", keyword);
         }
-
+        let localDesc = "";
         if (columnsVisible.desc) {
             let descriptionName = "";
             if (window.langDict.lang !== "English") {
                 descriptionName = " (" + window.langDict.lang + ")";
             }
-            const localDesc = row["Description" + descriptionName] || row["Description"];
+            localDesc = row["Description" + descriptionName] || row["Description"];
             html += makeCell(localDesc, "noDesc", keyword);
         }
 
         tr.innerHTML = html;
+        tr.style.cursor = "pointer";
+        tr.addEventListener("click", () => {
+            const shortForm = encodeURIComponent(row["Short Form"] || "");
+            const fullEnglish = encodeURIComponent(row["Full Form (English)"] || "");
+            const localForm = encodeURIComponent(row[window.langDict.lang] || "");
+            const desc = encodeURIComponent(row["Description"] || "");
+            const localDescEncoded = encodeURIComponent(localDesc || "");
+            const lang = encodeURIComponent(document.getElementById("langSelector").value);
+            window.location.href = `details.html?short=${shortForm}&full=${fullEnglish}&local=${localForm}&desc=${desc}&localDesc=${localDescEncoded}&lang=${lang}`;
+
+        });
+
         tbody.appendChild(tr);
     });
 }
