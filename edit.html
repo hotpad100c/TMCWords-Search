@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Details</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 40px;
+            background-color: #0a3d62;
+            background-image:
+                    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+                    url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+            background-size: 40px 40px, 40px 40px, auto;
+            color: white;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.8);
+        }
+
+        h1 {
+            text-align: center;
+            color: #f1c40f;
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            color: #87cefa;
+            margin: 12px 0 6px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            outline: none;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+
+        form input:focus {
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 8px #3498db;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #2980b9;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+
+        .back-link:hover {
+            background: #3498db;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 70%;
+            padding: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: #2980b9;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background: #3498db;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><span id="edit"></span></h1>
+    <form id="editForm">
+        <label><span id="short"></span>:
+            <input name="short" placeholder="">
+        </label>
+        <label><span id="english"></span>:
+            <input name="fullEnglish" placeholder="">
+        </label>
+        <label><span id="local"></span>:
+            <input name="local" placeholder="">
+        </label>
+        <label><span id="desc"></span>:
+            <input name="desc" placeholder="">
+        </label>
+        <label><span id="localDesc"></span>:
+            <input name="localDesc" placeholder="">
+        </label>
+        <a id="backLink" href="index.html" class="back-link">⬅</a>
+        <button type="submit"><span id="save"></span></button>
+
+    </form>
+</div>
+<script src="lang.js"></script>
+<script src="edit.js"></script>
+</body>
+</html>

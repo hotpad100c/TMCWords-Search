@@ -162,7 +162,24 @@ function renderTable(rows, keyword) {
             html += makeCell(localDesc, "noDesc", keyword);
         }
 
+        html += `<td><button class="edit-btn" title="Edit">&#9998;</button></td>`;
+
         tr.innerHTML = html;
+
+        const editBtn = tr.querySelector('.edit-btn');
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const params = new URLSearchParams({
+                short: row["Short Form"] || "",
+                fullEnglish: row["Full Form (English)"] || "",
+                local: row[window.langDict.lang] || "",
+                desc: row["Description"] || "",
+                localDesc: localDesc || "",
+                lang: document.getElementById("langSelector").value
+            });
+            window.location.href = `edit.html?${params.toString()}`;
+        });
+
         tr.style.cursor = "pointer";
         tr.addEventListener("click", () => {
             const shortForm = encodeURIComponent(row["Short Form"] || "");
@@ -192,6 +209,8 @@ function updateTableHeader() {
     if (columnsVisible.fullEnglish) html += `<th data-col="fullEnglish">${dict.fullEnglish}</th>`;
     if (columnsVisible.full && dict.full.trim() !== '' && columnsVisible.full) html += `<th data-col="full">${dict.full}</th>`;
     if (columnsVisible.desc) html += `<th data-col="desc">${dict.desc}</th>`;
+
+    html += `<th data-col="edit"></th>`;
 
     theadRow.innerHTML = html;
 }

@@ -12,6 +12,8 @@ const i18n = {
         noFull: " ",
         noDesc: "No Description",
         lang: "English",
+        edit: "Edit",
+        save: "Save",
         columns: {
             short: "Show Short Form",
             fullEnglish: "Show Full Form (English)",
@@ -32,6 +34,8 @@ const i18n = {
         noFull: "无全称",
         noDesc: "无描述",
         lang: "Chinese",
+        edit: "编辑",
+        save: "保存",
         columns: {
             short: "显示缩写",
             fullEnglish: "显示英文全称",
@@ -52,6 +56,8 @@ const i18n = {
         noFull: "لا يوجد اسم كامل",
         noDesc: "لا يوجد وصف",
         lang: "Arabic",
+        edit: "تعديل",
+        save: "حفظ",
         columns: {
             short: "عرض الاختصار",
             fullEnglish: "عرض الاسم الكامل (إنجليزي)",
@@ -72,6 +78,8 @@ const i18n = {
         noFull: "Pas de forme complète",
         noDesc: "Pas de description",
         lang: "French",
+        edit: "Éditer",
+        save: "Enregistrer",
         columns: {
             short: "Afficher l'abréviation",
             fullEnglish: "Afficher la forme complète (Anglais)",
@@ -92,6 +100,8 @@ const i18n = {
         noFull: "Keine Vollform",
         noDesc: "Keine Beschreibung",
         lang: "German",
+        edit: "Bearbeiten",
+        save: "Speichern",
         columns: {
             short: "Abkürzung anzeigen",
             fullEnglish: "Englische Vollform anzeigen",
@@ -112,6 +122,8 @@ const i18n = {
         noFull: "Nessuna forma completa",
         noDesc: "Nessuna descrizione",
         lang: "Italian",
+        edit: "Modifica",
+        save: "Salva",
         columns: {
             short: "Mostra abbreviazione",
             fullEnglish: "Mostra forma completa (Inglese)",
@@ -132,6 +144,8 @@ const i18n = {
         noFull: "完全な形なし",
         noDesc: "説明なし",
         lang: "Japanese",
+        edit: "編集",
+        save: "保存",
         columns: {
             short: "略語を表示",
             fullEnglish: "英語の完全な形を表示",
@@ -152,6 +166,8 @@ const i18n = {
         noFull: "전체 형식 없음",
         noDesc: "설명 없음",
         lang: "Korean",
+        edit: "편집",
+        save: "저장",
         columns: {
             short: "약어 표시",
             fullEnglish: "영어 전체형식 표시",
@@ -172,6 +188,8 @@ const i18n = {
         noFull: "Sem forma completa",
         noDesc: "Sem descrição",
         lang: "Portuguese",
+        edit: "Editar",
+        save: "Salvar",
         columns: {
             short: "Mostrar abreviação",
             fullEnglish: "Mostrar forma completa (Inglês)",
@@ -192,6 +210,8 @@ const i18n = {
         noFull: "Нет полной формы",
         noDesc: "Нет описания",
         lang: "Russian",
+        edit: "Редактировать",
+        save: "Сохранить",
         columns: {
             short: "Показать аббревиатуру",
             fullEnglish: "Показать английскую форму",
@@ -212,6 +232,8 @@ const i18n = {
         noFull: "Sin forma completa",
         noDesc: "Sin descripción",
         lang: "Spanish",
+        edit: "Editar",
+        save: "Guardar",
         columns: {
             short: "Mostrar abreviatura",
             fullEnglish: "Mostrar forma completa (Inglés)",
