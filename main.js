@@ -15,6 +15,19 @@ const categoryFiles = [
     "tree_farm.csv"
 ];
 
+async function loadCategory(fileName) {
+    const url = "categories/" + fileName;
+
+    const response = await fetch(url);
+    const text = await response.text();
+
+    const rows = text.split("\n").map(r => r.split(","));
+    const headers = rows[0];
+    const data = rows.slice(1);
+
+    renderTable(data, headers);
+}
+
 function renderCategoryButtons() {
     const container = document.getElementById("category-buttons");
     container.innerHTML = "";
