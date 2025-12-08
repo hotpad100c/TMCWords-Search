@@ -1,3 +1,45 @@
+const categoryFiles = [
+    "1.12.2_magic.csv",
+    "_template.csv",
+    "coding.csv",
+    "computational.csv",
+    "general.csv",
+    "glitch.csv",
+    "machine_name.csv",
+    "mechanical.csv",
+    "mob_farm.csv",
+    "other.csv",
+    "science.csv",
+    "slimestone.csv",
+    "storage.csv",
+    "tree_farm.csv"
+];
+
+async function loadCategory(fileName) {
+    const url = "categories/" + fileName;
+
+    const response = await fetch(url);
+    const text = await response.text();
+
+    const rows = text.split("\n").map(r => r.split(","));
+    const headers = rows[0];
+    const data = rows.slice(1);
+
+    renderTable(data, headers);
+}
+
+function renderCategoryButtons() {
+    const container = document.getElementById("category-buttons");
+    container.innerHTML = "";
+
+    categoryFiles.forEach(file => {
+        const name = file.replace(".csv", "");
+        const btn = document.createElement("button");
+        btn.textContent = name;
+        btn.onclick = () => loadCategory(file);
+        container.appendChild(btn);
+    });
+}
 
 function createDebugOutput() {
     const debugDiv = document.createElement("div");
@@ -44,7 +86,7 @@ if (!loadingBar) {
     logToPage("Loading bar element not found");
 } else {
     loadingBar.style.display = "block";
-
+    renderCategoryButtons();
     Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/TechMC%20Glossary.csv", {
         download: true,
         header: true,
@@ -217,5 +259,9 @@ function updateTableHeader() {
 function applyLang(dict) {
     window.langDict = dict;
     renderColumnSelectors();
+    renderCategoryButtons();
     renderTable(data, document.getElementById("searchBox").value.toLowerCase());
 }
+window.onload = () => {
+    renderCategoryButtons();
+};
