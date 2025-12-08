@@ -259,5 +259,9 @@ function updateTableHeader() {
 function applyLang(dict) {
     window.langDict = dict;
     renderColumnSelectors();
+    renderCategoryButtons();
     renderTable(data, document.getElementById("searchBox").value.toLowerCase());
 }
+window.onload = () => {
+    renderCategoryButtons();
+};
