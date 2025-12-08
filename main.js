@@ -1,6 +1,5 @@
 const categoryFiles = [
     "1.12.2_magic.csv",
-    "_template.csv",
     "coding.csv",
     "computational.csv",
     "general.csv",
@@ -45,17 +44,29 @@ async function loadCategory(fileName) {
 }
 
 function renderCategoryButtons() {
-    const container = document.getElementById("category-buttons");
-    container.innerHTML = "";
+    const select = document.getElementById("category-buttons");
+    select.innerHTML = "";
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Category";
+    select.appendChild(defaultOption);
 
     categoryFiles.forEach(file => {
         const name = file.replace(".csv", "");
-        const btn = document.createElement("button");
-        btn.textContent = name;
-        btn.onclick = () => loadCategory(file);
-        container.appendChild(btn);
+        const opt = document.createElement("option");
+        opt.value = file;
+        opt.textContent = name;
+        select.appendChild(opt);
     });
+
+    select.onchange = () => {
+        if (select.value) {
+            loadCategory(select.value);
+        }
+    };
 }
+
 
 function createDebugOutput() {
     const debugDiv = document.createElement("div");
