@@ -11,147 +11,330 @@
             font-weight: normal;
             font-style: normal;
         }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+            background-color: #0a3d62;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+                url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+            background-size: 40px 40px, 40px 40px, auto;
+            color: white;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-size: clamp(2.5em, 8vw, 6em);
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(102, 204, 255, 0.5),
+                         0 0 40px rgba(102, 204, 255, 0.3);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(102, 204, 255, 0.5), 0 0 40px rgba(102, 204, 255, 0.3); }
+            50% { text-shadow: 0 0 30px rgba(102, 204, 255, 0.8), 0 0 60px rgba(102, 204, 255, 0.5); }
+        }
+        
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .search-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        input[type="text"] {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid rgba(102, 204, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #66ccff;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+        }
+        
+        select {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid rgba(102, 204, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 45px;
+        }
+        
+        select:hover {
+            border-color: #66ccff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #66ccff;
+            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+        }
+        
+        select option {
+            background: #0a3d62;
+            color: white;
+            padding: 10px;
+        }
+        
+        #columnSelectors {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(102, 204, 255, 0.2);
+        }
+        
+        #columnSelectors p {
+            margin: 10px 0;
+        }
+        
+        #columnSelectors label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 6px;
+            user-select: none;
+        }
+        
+        #columnSelectors label:hover {
+            color: #66ccff;
+            background: rgba(102, 204, 255, 0.1);
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #66ccff;
+        }
+        
         a {
             color: #66ccff;
             text-decoration: none;
-        }
-        h1 {
-            font-size: 6em;
-            color: #fff;
-        }
-        #category-buttons {
-            display: inline-block !important;
-            display: flex !important;
-            flex-wrap: wrap;     
-            gap: 10px; 
-            margin-bottom: 20px;  
-        }
-        #category-buttons button {
-            padding: 10px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 6px;
-        }
-        #category-buttons li {
-            display: inline-flex !important;
-        }
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-            background-color: #0a3d62;
-
-            background-image:
-                    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-                    url('https://www.transparenttextures.com/patterns/handmade-paper.png');
-            background-size: 40px 40px, 40px 40px, auto;
-            color: white;
-            animation: blinkDots 3s infinite;
+            transition: all 0.3s ease;
         }
         
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            background: #00000000;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.1s;
+        a:hover {
+            color: #99ddff;
+            text-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
         }
-
-        button:hover {
-            background: #3498db22;
+        
+        .data-source {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(102, 204, 255, 0.2);
         }
-
-        button:active {
-            transform: scale(0.98);
-        }
-        input { padding: 5px; width: 600px; }
-        #columnSelectors {
-            margin: 10px 0;
-            padding: 5px;
-            background-color: rgba(255,255,255,0.05);
-            border-radius: 4px;
-        }
-        #columnSelectors label {
-            margin-right: 10px;
-            cursor: pointer;
-        }
+        
         #loadingBar {
-            width: 100%;
-            height: 20px;
-            background-color: #f3f3f3;
-            border-radius: 5px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 10px;
+            display: none;
         }
 
         .progress-bar {
             width: 25%;
             height: 100%;
-            background-color: #4caf50;
+            background: linear-gradient(90deg, #66ccff, #3498db);
             animation: indeterminate 1.5s infinite linear;
+            box-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
         }
 
         @keyframes indeterminate {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(400%);
-            }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
         }
-        table { border-collapse: collapse; margin-top: 20px; width: 100%; }
-        td, th { border: 1px solid #ccc; padding: 8px; }
-        .no-result { text-align:center; color:#888; }
+        
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(102, 204, 255, 0.2);
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th {
+            background: rgba(102, 204, 255, 0.2);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(102, 204, 255, 0.4);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        tbody tr:hover {
+            background: rgba(102, 204, 255, 0.1);
+            transform: scale(1.01);
+        }
+        
+        .no-result {
+            text-align: center;
+            color: #888;
+            padding: 40px;
+            font-style: italic;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 2px solid rgba(102, 204, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(102, 204, 255, 0.2);
+            border-color: #66ccff;
+            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+        
+        #category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+        
+        #category-buttons button {
+            padding: 10px 16px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-<h1>TechMC Glossary Search</h1>
-<input type="text" id="searchBox" placeholder="Keywords..." />
-<select id="category-buttons"></select>
-<select id="langSelector">
-    <option value="en">English</option>
-    <option value="zh">中文</option>
-    <option value="ar">العربية</option>
-    <option value="fr">Français</option>
-    <option value="de">Deutsch</option>
-    <option value="it">Italiano</option>
-    <option value="ja">日本語</option>
-    <option value="ko">한국어</option>
-    <option value="pt">Português</option>
-    <option value="ru">Русский</option>
-    <option value="es">Español</option>
-</select>
+    <h1>TechMC Glossary Search</h1>
+    
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="Search keywords..." />
+        <select id="category-buttons"></select>
+        <select id="langSelector">
+            <option value="en">🇬🇧 English</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="es">🇪🇸 Español</option>
+        </select>
+    </div>
 
-<div id="columnSelectors">
-    <p><label><input type="checkbox" data-col="short" checked> Short Form</label></p>
-    <p><label><input type="checkbox" data-col="fullEnglish" checked> Full Form (English)</label></p>
-    <p><label><input type="checkbox" data-col="full" checked> Full Form (Local)</label></p>
-    <p><label><input type="checkbox" data-col="desc" checked> Description</label></p>
-</div>
+    <div id="columnSelectors">
+        <p><label><input type="checkbox" data-col="short" checked> Short Form</label></p>
+        <p><label><input type="checkbox" data-col="fullEnglish" checked> Full Form (English)</label></p>
+        <p><label><input type="checkbox" data-col="full" checked> Full Form (Local)</label></p>
+        <p><label><input type="checkbox" data-col="desc" checked> Description</label></p>
+    </div>
 
-<p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv">DuskScorpio's TechMC-Glossary</a></p>
-<div id="loadingBar" style="display: none;">
-    <div class="progress-bar"></div>
-</div>
-<table id="resultTable">
-    <thead>
-    <tr>
-        <th>Short Form</th>
-        <th>Full Form (English)</th>
-        <th>Full Form (Local)</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <div class="data-source">
+        <p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv" target="_blank">DuskScorpio's TechMC-Glossary</a></p>
+    </div>
+    
+    <div id="loadingBar">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <div class="table-container">
+        <table id="resultTable">
+            <thead>
+                <tr>
+                    <th>Short Form</th>
+                    <th>Full Form (English)</th>
+                    <th>Full Form (Local)</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-<script src="lang.js"></script>
-<script src="main.js"></script>
+    <script src="lang.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
