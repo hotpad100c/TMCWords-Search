@@ -17,7 +17,7 @@ const categoryFiles = [
 
 async function loadCategory(fileName) {
     const url = "categories/" + fileName;
-
+    logToPage("Started parsing CSV data : " + url);
     Papa.parse(url, {
         download: true,
         header: true,
