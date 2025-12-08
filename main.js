@@ -1,3 +1,32 @@
+const categoryFiles = [
+    "1.12.2_magic.csv",
+    "_template.csv",
+    "coding.csv",
+    "computational.csv",
+    "general.csv",
+    "glitch.csv",
+    "machine_name.csv",
+    "mechanical.csv",
+    "mob_farm.csv",
+    "other.csv",
+    "science.csv",
+    "slimestone.csv",
+    "storage.csv",
+    "tree_farm.csv"
+];
+
+function renderCategoryButtons() {
+    const container = document.getElementById("category-buttons");
+    container.innerHTML = "";
+
+    categoryFiles.forEach(file => {
+        const name = file.replace(".csv", "");
+        const btn = document.createElement("button");
+        btn.textContent = name;
+        btn.onclick = () => loadCategory(file);
+        container.appendChild(btn);
+    });
+}
 
 function createDebugOutput() {
     const debugDiv = document.createElement("div");
