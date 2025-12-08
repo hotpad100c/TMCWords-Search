@@ -18,7 +18,7 @@ jobs:
       - name: Checkout TechMC Glossary
         uses: actions/checkout@v4
         with:
-          repository: Youmiel/TechMC-Glossary
+          repository: DuskScorpio/TechMC-Glossary
           ref: split
           sparse-checkout: |
             categories
