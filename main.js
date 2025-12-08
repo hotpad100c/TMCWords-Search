@@ -21,6 +21,7 @@ async function loadCategory(fileName) {
     Papa.parse(url, {
         download: true,
         header: true,
+        skipEmptyLines: true,
         complete: function(results) {
             loadingBar.style.display = "none";
 
