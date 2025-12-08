@@ -20,6 +20,9 @@ jobs:
         with:
           repository: Youmiel/TechMC-Glossary
           ref: split
+          sparse-checkout: |
+            categories
+          sparse-checkout-cone-mode: true
           path: glossary
           # Currently use Youmiel's for test.
 
@@ -37,6 +40,7 @@ jobs:
           git add .
           git commit -m "Sync categories from TechMC-Glossary" || true
           git push
+          
       - name: Clean up
         run: |
           rm -rf glossary
