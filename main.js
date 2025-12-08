@@ -86,7 +86,7 @@ if (!loadingBar) {
     logToPage("Loading bar element not found");
 } else {
     loadingBar.style.display = "block";
-
+    renderCategoryButtons();
     Papa.parse("https://raw.githubusercontent.com/DuskScorpio/TechMC-Glossary/main/TechMC%20Glossary.csv", {
         download: true,
         header: true,
