@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>TechMC Glossary Search</title>
-    <div id="category-buttons" class="category-list"></div>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <style>
         @font-face {
@@ -19,6 +18,18 @@
         h1 {
             font-size: 6em;
             color: #fff;
+        }
+        #category-buttons {
+            display: flex;  
+            flex-wrap: wrap;     
+            gap: 10px; 
+            margin-bottom: 20px;  
+        }
+        #category-buttons button {
+            padding: 10px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 6px;
         }
         body {
             font-family: sans-serif;
@@ -96,6 +107,7 @@
 </head>
 <body>
 <h1>TechMC Glossary Search</h1>
+<div id="category-buttons" class="category-list"></div>
 <input type="text" id="searchBox" placeholder="Keywords..." />
 <select id="langSelector">
     <option value="en">English</option>
