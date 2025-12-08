@@ -25,7 +25,7 @@ async function loadCategory(fileName) {
     const headers = rows[0];
     const data = rows.slice(1);
 
-    renderTable(data, headers);
+    renderTable(rows, headers);
 }
 
 function renderCategoryButtons() {
