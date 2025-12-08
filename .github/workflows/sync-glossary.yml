@@ -37,3 +37,7 @@ jobs:
           git add .
           git commit -m "Sync categories from TechMC-Glossary" || true
           git push
+      - name: Clean up
+        run: |
+          rm -rf glossary
+
