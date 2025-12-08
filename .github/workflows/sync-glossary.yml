@@ -1,0 +1,39 @@
+name: Sync Glossary Categories
+
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: "0 0 * * *"  # Once per day
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout this
+      - name: Checkout Target Repo
+        uses: actions/checkout@v4
+
+      # 2. Checkout target
+      - name: Checkout TechMC Glossary
+        uses: actions/checkout@v4
+        with:
+          repository: Youmiel/TechMC-Glossary
+          ref: split
+          path: glossary
+          # Currently use Youmiel's for test.
+
+      # 3. Copy categories 
+      - name: Copy categories folder
+        run: |
+          rm -rf categories
+          cp -r glossary/categories ./categories
+
+      # 4. Push
+      - name: Commit and push updates
+        run: |
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git add .
+          git commit -m "Sync categories from TechMC-Glossary" || true
+          git push
