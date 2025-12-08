@@ -17,31 +17,63 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Courier New', monospace;
             padding: 40px 20px;
-            background-color: #0a3d62;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-                url('https://www.transparenttextures.com/patterns/handmade-paper.png');
-            background-size: 40px 40px, 40px 40px, auto;
-            color: white;
+            background-color: #0a4a7a;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.08) 19px, rgba(255,255,255,0.08) 20px),
+                repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.08) 19px, rgba(255,255,255,0.08) 20px),
+                repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(255,255,255,0.15) 99px, rgba(255,255,255,0.15) 100px),
+                repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(255,255,255,0.15) 99px, rgba(255,255,255,0.15) 100px);
+            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+            color: #e0f2ff;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
         }
         
         h1 {
-            font-size: clamp(2.5em, 8vw, 6em);
+            font-family: 'Courier New', monospace;
+            font-size: clamp(2em, 6vw, 4.5em);
             color: #fff;
             text-align: center;
-            margin-bottom: 40px;
-            text-shadow: 0 0 20px rgba(102, 204, 255, 0.5),
-                         0 0 40px rgba(102, 204, 255, 0.3);
-            animation: glow 3s ease-in-out infinite;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(102, 204, 255, 0.8),
+                         2px 2px 0 rgba(0,0,0,0.3);
+            border-top: 3px double #66ccff;
+            border-bottom: 3px double #66ccff;
+            padding: 20px 0;
         }
         
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(102, 204, 255, 0.5), 0 0 40px rgba(102, 204, 255, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(102, 204, 255, 0.8), 0 0 60px rgba(102, 204, 255, 0.5); }
+        .subtitle {
+            text-align: center;
+            font-size: 0.9em;
+            color: #a0d0f0;
+            margin-bottom: 40px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
         }
         
         .search-container {
@@ -60,59 +92,69 @@
         }
         
         input[type="text"] {
-            padding: 15px 20px;
+            padding: 12px 15px;
             font-size: 16px;
-            border: 2px solid rgba(102, 204, 255, 0.3);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #66ccff;
+            background: #0d3a5f;
+            color: #e0f2ff;
             transition: all 0.3s ease;
             width: 100%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
         }
         
         input[type="text"]::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: #6b9fcc;
+            font-style: italic;
         }
         
         input[type="text"]:focus {
             outline: none;
-            border-color: #66ccff;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+            border-color: #99ddff;
+            background: #0f4570;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 2px #66ccff,
+                        0 0 15px rgba(102, 204, 255, 0.5);
         }
         
         select {
-            padding: 15px 20px;
+            padding: 12px 15px;
             font-size: 16px;
-            border: 2px solid rgba(102, 204, 255, 0.3);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #66ccff;
+            background: #0d3a5f;
+            color: #e0f2ff;
             cursor: pointer;
             transition: all 0.3s ease;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-image: 
+                linear-gradient(45deg, transparent 50%, #66ccff 50%),
+                linear-gradient(-45deg, #66ccff 50%, transparent 50%);
+            background-size: 6px 6px, 6px 6px;
             background-repeat: no-repeat;
-            background-position: right 15px center;
-            padding-right: 45px;
+            background-position: right 12px top 50%, right 7px top 50%;
+            padding-right: 35px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
         }
         
         select:hover {
-            border-color: #66ccff;
-            background: rgba(255, 255, 255, 0.15);
+            border-color: #99ddff;
+            background-color: #0f4570;
         }
         
         select:focus {
             outline: none;
-            border-color: #66ccff;
-            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+            border-color: #99ddff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 2px #66ccff,
+                        0 0 15px rgba(102, 204, 255, 0.5);
         }
         
         select option {
-            background: #0a3d62;
-            color: white;
+            background: #0d3a5f;
+            color: #e0f2ff;
             padding: 10px;
         }
         
@@ -120,48 +162,82 @@
             max-width: 1200px;
             margin: 0 auto 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(102, 204, 255, 0.2);
+            background: #0d3a5f;
+            border: 2px solid #66ccff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
+            position: relative;
+        }
+        
+        #columnSelectors::before {
+            content: 'DISPLAY OPTIONS';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #0a4a7a;
+            padding: 0 10px;
+            font-size: 0.75em;
+            color: #66ccff;
+            letter-spacing: 0.2em;
+            font-weight: 700;
         }
         
         #columnSelectors p {
             margin: 10px 0;
+            display: flex;
+            align-items: center;
         }
         
         #columnSelectors label {
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             transition: color 0.3s ease;
             padding: 5px 10px;
-            border-radius: 6px;
             user-select: none;
+            font-size: 0.95em;
+            letter-spacing: 0.05em;
         }
         
         #columnSelectors label:hover {
             color: #66ccff;
-            background: rgba(102, 204, 255, 0.1);
         }
         
         input[type="checkbox"] {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            accent-color: #66ccff;
+            appearance: none;
+            border: 2px solid #66ccff;
+            background: #0d3a5f;
+            position: relative;
+        }
+        
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: #66ccff;
+        }
+        
+        input[type="checkbox"]:hover {
+            box-shadow: 0 0 5px rgba(102, 204, 255, 0.5);
         }
         
         a {
             color: #66ccff;
             text-decoration: none;
             transition: all 0.3s ease;
+            border-bottom: 1px dashed #66ccff;
         }
         
         a:hover {
             color: #99ddff;
-            text-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
+            border-bottom-style: solid;
         }
         
         .data-source {
@@ -169,18 +245,34 @@
             margin: 20px auto;
             max-width: 1200px;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(102, 204, 255, 0.2);
+            background: #0d3a5f;
+            border: 2px solid #66ccff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
+            font-size: 0.9em;
+            position: relative;
+        }
+        
+        .data-source::before {
+            content: 'DATA SOURCE';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0a4a7a;
+            padding: 0 10px;
+            font-size: 0.85em;
+            color: #66ccff;
+            letter-spacing: 0.2em;
+            font-weight: 700;
         }
         
         #loadingBar {
             max-width: 1200px;
             margin: 0 auto 20px;
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            height: 4px;
+            background: #0d3a5f;
+            border: 1px solid #66ccff;
             overflow: hidden;
             display: none;
         }
@@ -188,9 +280,14 @@
         .progress-bar {
             width: 25%;
             height: 100%;
-            background: linear-gradient(90deg, #66ccff, #3498db);
+            background: repeating-linear-gradient(
+                90deg,
+                #66ccff,
+                #66ccff 10px,
+                #3498db 10px,
+                #3498db 20px
+            );
             animation: indeterminate 1.5s infinite linear;
-            box-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
         }
 
         @keyframes indeterminate {
@@ -202,45 +299,74 @@
             max-width: 1200px;
             margin: 0 auto;
             overflow-x: auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(102, 204, 255, 0.2);
+            background: #0d3a5f;
+            border: 2px solid #66ccff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
+            position: relative;
+        }
+        
+        .table-container::before {
+            content: 'GLOSSARY DATABASE';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #0a4a7a;
+            padding: 0 10px;
+            font-size: 0.75em;
+            color: #66ccff;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            z-index: 10;
         }
         
         table {
             border-collapse: collapse;
             width: 100%;
+            font-size: 0.95em;
         }
         
         th {
-            background: rgba(102, 204, 255, 0.2);
-            padding: 15px;
+            background: #0a3555;
+            padding: 12px 15px;
             text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid rgba(102, 204, 255, 0.4);
+            font-weight: 700;
+            border-bottom: 2px solid #66ccff;
+            border-right: 1px solid rgba(102, 204, 255, 0.3);
             position: sticky;
             top: 0;
-            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.1em;
+            color: #99ddff;
+        }
+        
+        th:last-child {
+            border-right: none;
         }
         
         td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(102, 204, 255, 0.2);
+            border-right: 1px solid rgba(102, 204, 255, 0.15);
+        }
+        
+        td:last-child {
+            border-right: none;
         }
         
         tbody tr {
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         tbody tr:hover {
-            background: rgba(102, 204, 255, 0.1);
-            transform: scale(1.01);
+            background: #0f4570;
+            box-shadow: inset 0 0 10px rgba(102, 204, 255, 0.2);
         }
         
         .no-result {
             text-align: center;
-            color: #888;
+            color: #6b9fcc;
             padding: 40px;
             font-style: italic;
         }
@@ -248,21 +374,26 @@
         button {
             margin-top: 20px;
             padding: 12px 24px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border: 2px solid rgba(102, 204, 255, 0.3);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #66ccff;
+            background: #0d3a5f;
+            color: #e0f2ff;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 1px rgba(102, 204, 255, 0.3);
         }
 
         button:hover {
-            background: rgba(102, 204, 255, 0.2);
-            border-color: #66ccff;
-            box-shadow: 0 0 20px rgba(102, 204, 255, 0.4);
+            background: #0f4570;
+            border-color: #99ddff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3),
+                        0 0 0 2px #66ccff,
+                        0 0 15px rgba(102, 204, 255, 0.5);
             transform: translateY(-2px);
         }
 
@@ -279,59 +410,63 @@
         }
         
         #category-buttons button {
-            padding: 10px 16px;
-            font-size: 14px;
+            padding: 8px 14px;
+            font-size: 0.85em;
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
-    <h1>TechMC Glossary Search</h1>
-    
-    <div class="search-container">
-        <input type="text" id="searchBox" placeholder="Search keywords..." />
-        <select id="category-buttons"></select>
-        <select id="langSelector">
-            <option value="en">🇬🇧 English</option>
-            <option value="zh">🇨🇳 中文</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="ja">🇯🇵 日本語</option>
-            <option value="ko">🇰🇷 한국어</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="es">🇪🇸 Español</option>
-        </select>
-    </div>
+    <div class="container">
+        <h1>TechMC Glossary</h1>
+        <div class="subtitle">Technical Documentation Query System</div>
+        
+        <div class="search-container">
+            <input type="text" id="searchBox" placeholder="Enter search keywords..." />
+            <select id="category-buttons"></select>
+            <select id="langSelector">
+                <option value="en">EN — English</option>
+                <option value="zh">ZH — 中文</option>
+                <option value="ar">AR — العربية</option>
+                <option value="fr">FR — Français</option>
+                <option value="de">DE — Deutsch</option>
+                <option value="it">IT — Italiano</option>
+                <option value="ja">JA — 日本語</option>
+                <option value="ko">KO — 한국어</option>
+                <option value="pt">PT — Português</option>
+                <option value="ru">RU — Русский</option>
+                <option value="es">ES — Español</option>
+            </select>
+        </div>
 
-    <div id="columnSelectors">
-        <p><label><input type="checkbox" data-col="short" checked> Short Form</label></p>
-        <p><label><input type="checkbox" data-col="fullEnglish" checked> Full Form (English)</label></p>
-        <p><label><input type="checkbox" data-col="full" checked> Full Form (Local)</label></p>
-        <p><label><input type="checkbox" data-col="desc" checked> Description</label></p>
-    </div>
+        <div id="columnSelectors">
+            <p><label><input type="checkbox" data-col="short" checked> SHORT FORM</label></p>
+            <p><label><input type="checkbox" data-col="fullEnglish" checked> FULL FORM (ENGLISH)</label></p>
+            <p><label><input type="checkbox" data-col="full" checked> FULL FORM (LOCAL)</label></p>
+            <p><label><input type="checkbox" data-col="desc" checked> DESCRIPTION</label></p>
+        </div>
 
-    <div class="data-source">
-        <p>Data from <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv" target="_blank">DuskScorpio's TechMC-Glossary</a></p>
-    </div>
-    
-    <div id="loadingBar">
-        <div class="progress-bar"></div>
-    </div>
-    
-    <div class="table-container">
-        <table id="resultTable">
-            <thead>
-                <tr>
-                    <th>Short Form</th>
-                    <th>Full Form (English)</th>
-                    <th>Full Form (Local)</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="data-source">
+            <p>Repository: <a href="https://github.com/DuskScorpio/TechMC-Glossary/blob/main/TechMC%20Glossary.csv" target="_blank">DuskScorpio/TechMC-Glossary</a></p>
+        </div>
+        
+        <div id="loadingBar">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="table-container">
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Short Form</th>
+                        <th>Full Form (English)</th>
+                        <th>Full Form (Local)</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 
     <script src="lang.js"></script>
