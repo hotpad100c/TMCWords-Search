@@ -18,14 +18,29 @@ const categoryFiles = [
 async function loadCategory(fileName) {
     const url = "categories/" + fileName;
 
-    const response = await fetch(url);
-    const text = await response.text();
+    Papa.parse(url, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            loadingBar.style.display = "none";
 
-    const rows = text.split("\n").map(r => r.split(","));
-    const headers = rows[0];
-    const data = rows.slice(1);
+            if (results.errors.length > 0) {
+                logToPage("Papa Parse errors:", results.errors);
+            }
 
-    renderTable(rows, headers);
+            data = results.data;
+            headers = results.meta.fields;
+
+            logToPage("Parsed CSV data length: " + data.length);
+
+            applyLang(window.langDict);
+            renderTable(data, headers);
+        },
+        error: function(error) {
+            loadingBar.style.display = "none";
+            logToPage("Papa Parse failed:", error);
+        }
+    });
 }
 
 function renderCategoryButtons() {
