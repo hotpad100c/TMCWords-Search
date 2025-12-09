@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: DuskScorpio/TechMC-Glossary
-          ref: split
+          ref: main
           sparse-checkout: |
             categories
           sparse-checkout-cone-mode: true
